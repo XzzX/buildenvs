@@ -15,6 +15,7 @@ RUN apt-get update && \
         libboost-all-dev \
         libfftw3-dev \
         libopenmpi-dev \
+        ncurses-term \
         python3 \
         python3-matplotlib \
         python3-numpy \
