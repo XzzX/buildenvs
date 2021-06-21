@@ -29,8 +29,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ${{ github.workspace }}
-          file: ${{ github.dockerfile }} 
-          tags: xzzx/devel:${{ github.dockerfile }}
+          file: ${{ matrix.dockerfile }} 
+          tags: xzzx/devel:${{ matrix.dockerfile }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
