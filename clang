@@ -1,0 +1,10 @@
+FROM xzzx/devel:ubuntu
+
+wget https://apt.llvm.org/llvm.sh
+chmod +x llvm.sh
+sudo ./llvm.sh 12
+
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-12 90 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-12 --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-12 --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-12
+
+export CC=clang
+export CXX=clang++
