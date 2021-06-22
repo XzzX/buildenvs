@@ -1,8 +1,14 @@
 FROM xzzx/devel:ubuntu
 
-RUN wget https://registrationcenter-download.intel.com/akdlm/irc_nas/17769/l_BaseKit_p_2021.2.0.2883_offline.sh
-RUN chmod +x l_BaseKit_p_2021.2.0.2883_offline.sh
-RUN ./l_BaseKit_p_2021.2.0.2883_offline.sh -r -a --silent --action install --eula accept --components default
+RUN wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+RUN apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+RUN rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+
+RUN add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"
+
+RUN apt-get update
+RUN apt-get install -y intel-basekit
+
 RUN source /opt/intel/oneapi/setvars.sh
 
 RUN export CC=icx
