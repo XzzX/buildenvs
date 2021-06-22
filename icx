@@ -12,6 +12,7 @@ RUN apt-get install -y intel-basekit
 RUN ls /opt
 RUN ls /opt/intel
 RUN ls /opt/intel/oneapi
+RUN source /opt/intel/oneapi/setvars.sh
 RUN icpx --version
 
 RUN export CC=icx
