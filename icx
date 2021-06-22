@@ -9,6 +9,9 @@ RUN add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"
 RUN apt-get update
 RUN apt-get install -y intel-basekit
 
+RUN ls /opt
+RUN ls /opt/intel
+RUN ls /opt/intel/oneapi
 RUN icpx --version
 
 RUN export CC=icx
