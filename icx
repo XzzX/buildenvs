@@ -31,5 +31,5 @@ RUN rm -rf /var/lib/apt/lists/*
 ENV OMP_PROC_BIND=spread
 ENV OMP_PLACES=threads
 
-RUN export CC=icx
-RUN export CXX=icpx
+ENV CC=icx
+ENV CXX=icpx
