@@ -1,9 +1,9 @@
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y \
         build-essential \
         ccache \
         cmake \
@@ -24,6 +24,6 @@ RUN apt-get update && \
         software-properties-common \
         sudo \
         vim \
-        wget && \
-    apt-get purge --autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+        wget 
+RUN apt-get purge --autoremove -y 
+RUN rm -rf /var/lib/apt/lists/*

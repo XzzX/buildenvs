@@ -1,19 +1,32 @@
-FROM xzzx/devel:ubuntu
+FROM intel/oneapi-hpckit:latest
 
-RUN wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-RUN apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-RUN rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-
-RUN add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"
-
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get install -y intel-basekit
-
-RUN ls /opt
-RUN ls /opt/intel
-RUN ls /opt/intel/oneapi
-RUN . /opt/intel/oneapi/setvars.sh
-RUN icpx --version
+RUN apt-get upgrade -y
+RUN apt-get install -y \
+        build-essential \
+        ccache \
+        cmake \
+        curl \
+        doxygen \
+        ghostscript \
+        git \
+        graphviz \
+        libboost-all-dev \
+        libfftw3-dev \
+        libopenmpi-dev \
+        ncurses-term \
+        python3 \
+        python3-matplotlib \
+        python3-numpy \
+        python3-pip \
+        python3-scipy \
+        software-properties-common \
+        sudo \
+        vim \
+        wget
+RUN apt-get purge --autoremove -y
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN export CC=icx
 RUN export CXX=icpx
