@@ -1,5 +1,8 @@
 FROM intel/oneapi-hpckit:latest
 
+COPY kitware-archive.sh kitware-archive.sh
+RUN ./kitware-archive.sh
+
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get upgrade -y
