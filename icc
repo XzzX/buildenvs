@@ -2,6 +2,7 @@ FROM intel/oneapi-hpckit:latest
 
 COPY kitware-archive.sh kitware-archive.sh
 RUN ./kitware-archive.sh
+RUN add-apt-repository ppa:git-core/ppa
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
