@@ -2,10 +2,10 @@ FROM xzzx/devel:ubuntu
 
 RUN wget https://apt.llvm.org/llvm.sh
 RUN chmod +x llvm.sh
-RUN ./llvm.sh 13
-RUN apt-get install -y clang-format-13 clang-tidy-13
+RUN ./llvm.sh 12
+RUN apt-get install -y clang-format-12 clang-tidy-12
 
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-13 90 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-13 --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-13 --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-13
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-12 90 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-12 --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-12 --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-12
 
-ENV CC=clang-13
-ENV CXX=clang++-13
+ENV CC=clang-12
+ENV CXX=clang++-12
