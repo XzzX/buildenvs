@@ -39,3 +39,6 @@ ENV OMP_PLACES=threads
 
 ENV CC=icx
 ENV CXX=icpx
+
+RUN $CC --version
+RUN $CXX --version
