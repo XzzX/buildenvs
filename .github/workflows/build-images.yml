@@ -38,7 +38,7 @@ jobs:
     continue-on-error: ${{ matrix.config.continue-on-error == 'true' }}
     strategy:
       matrix:
-        dockerfile: ['gcc', 'clang', 'icx', 'icc']
+        dockerfile: ['gcc', 'clang', 'icx', 'icc', 'gcc-offload']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

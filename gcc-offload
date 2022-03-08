@@ -1,0 +1,54 @@
+FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y \
+        build-essential \
+        ccache \
+        cmake \
+        curl \
+        doxygen \
+        ghostscript \
+        git \
+        graphviz \
+        libboost-all-dev \
+        libfftw3-dev \
+        libhdf5-mpi-dev \
+        libopenmpi-dev \
+        ncurses-term \
+        python3 \
+        python3-matplotlib \
+        python3-numpy \
+        python3-pip \
+        python3-scipy \
+        software-properties-common \
+        sudo \
+        vim \
+        wget
+
+COPY kitware-archive.sh kitware-archive.sh
+RUN ./kitware-archive.sh
+RUN add-apt-repository ppa:git-core/ppa
+RUN apt-get upgrade -y
+
+RUN apt-get purge --autoremove -y
+RUN rm -rf /var/lib/apt/lists/*
+
+ENV OMP_PROC_BIND=spread
+ENV OMP_PLACES=threads
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+RUN apt-get update 
+RUN apt-get install -y \
+        gcc-11 \
+        g++-11 \
+        gcc-11-offload-nvptx
+RUN apt-get purge --autoremove -y 
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+
+ENV CC=gcc-11
+ENV CXX=g++-11
