@@ -7,10 +7,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
 
-COPY kitware-archive.sh kitware-archive.sh
-RUN ./kitware-archive.sh
-RUN add-apt-repository ppa:git-core/ppa
-RUN apt-get upgrade -y
+COPY kitware-archive.sh kitware-archive.sh 
+RUN ./kitware-archive.sh \
+&& add-apt-repository ppa:git-core/ppa \
+&& apt-get upgrade -y
 
 RUN apt-get purge --autoremove -y
 RUN rm -rf /var/lib/apt/lists/*
