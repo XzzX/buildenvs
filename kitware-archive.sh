@@ -62,16 +62,12 @@ then
 fi
 
 case "${release}" in
-xenial)
-  packages="apt-transport-https"
-  keyring_packages="wget"
-  ;;
-bionic|focal)
+focal|jammy)
   packages=
-  keyring_packages="gpg wget"
+  keyring_packages="ca-certificates gpg wget"
   ;;
 *)
-  echo "Only Ubuntu Xenial (16.04), Bionic (18.04), and Focal (20.04) are supported. Aborting." > /dev/stderr
+  echo "Only Ubuntu Focal (20.04) and Jammy (22.04) are supported. Aborting." > /dev/stderr
   exit 1
   ;;
 esac
