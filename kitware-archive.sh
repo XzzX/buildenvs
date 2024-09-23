@@ -62,18 +62,18 @@ then
 fi
 
 case "${release}" in
-focal|jammy)
+noble|jammy|focal)
   packages=
   keyring_packages="ca-certificates gpg wget"
   ;;
 *)
-  echo "Only Ubuntu Focal (20.04) and Jammy (22.04) are supported. Aborting." > /dev/stderr
+  echo "Only Ubuntu Noble (24.04), Jammy (22.04), and Focal (20.04) are supported. Aborting." > /dev/stderr
   exit 1
   ;;
 esac
 
 get_keyring=
-if [ ! -f /usr/share/keyrings/kitware-archive-keyring.gpg ]
+if [ ! -f /usr/share/doc/kitware-archive-keyring/copyright ]
 then
   packages="${packages} ${keyring_packages}"
   get_keyring=1
