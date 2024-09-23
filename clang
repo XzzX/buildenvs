@@ -1,4 +1,9 @@
-FROM xzzx/devel:ubuntu
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY *.sh .
+RUN ./before_compiler_setup.sh
 
 RUN apt-get update \
  && apt-get install -y \
@@ -6,4 +11,7 @@ RUN apt-get update \
         clang-format \
         clang-tidy
 
-RUN rm -rf /var/lib/apt/lists/*
+ENV CC=clang
+ENV CXX=clang++
+
+RUN ./after_compiler_setup.sh
