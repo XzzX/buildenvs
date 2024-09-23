@@ -1,11 +1,11 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:git-core/ppa
-RUN apt-get update
+RUN apt-get update \
+ && apt-get upgrade -y
+# RUN apt-get install -y software-properties-common
+# RUN add-apt-repository ppa:git-core/ppa
+# RUN apt-get update
 RUN apt-get install -y \
         build-essential \
         ccache \
@@ -29,10 +29,10 @@ RUN apt-get install -y \
         vim \
         wget 
 
-COPY kitware-archive.sh kitware-archive.sh
-RUN ./kitware-archive.sh
-RUN add-apt-repository ppa:git-core/ppa
-RUN apt-get upgrade -y
+# COPY kitware-archive.sh kitware-archive.sh
+# RUN ./kitware-archive.sh
+# RUN add-apt-repository ppa:git-core/ppa
+# RUN apt-get upgrade -y
 
 RUN apt-get purge --autoremove -y 
 RUN rm -rf /var/lib/apt/lists/*
