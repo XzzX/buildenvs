@@ -9,16 +9,16 @@ RUN ./before_compiler_setup.sh
 
 RUN wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
- && ./llvm.sh ${COMPILER_VERSION} \
- && apt-get install -y libomp-${COMPILER_VERSION}-dev clang-format-${COMPILER_VERSION} clang-tidy-${COMPILER_VERSION}
+ && ./llvm.sh $COMPILER_VERSION \
+ && apt-get install -y libomp-$COMPILER_VERSION-dev clang-format-$COMPILER_VERSION clang-tidy-$COMPILER_VERSION
 
 RUN update-alternatives \
-      --install /usr/bin/clang clang /usr/bin/clang-${COMPILER_VERSION} 90 \
-      --slave /usr/bin/clang++ clang++ /usr/bin/clang++-${COMPILER_VERSION} \
-      --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-${COMPILER_VERSION} \
-      --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-${COMPILER_VERSION}
+      --install /usr/bin/clang clang /usr/bin/clang-$COMPILER_VERSION 90 \
+      --slave /usr/bin/clang++ clang++ /usr/bin/clang++-$COMPILER_VERSION \
+      --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-$COMPILER_VERSION \
+      --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-$COMPILER_VERSION
 
-ENV CC=clang-${COMPILER_VERSION}
-ENV CXX=clang++-${COMPILER_VERSION}
+ENV CC=clang-$COMPILER_VERSION
+ENV CXX=clang++-$COMPILER_VERSION
 
 RUN ./after_compiler_setup.sh
