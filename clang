@@ -8,8 +8,8 @@ COPY *.sh .
 RUN ./before_compiler_setup.sh
 
 RUN wget https://apt.llvm.org/llvm.sh \
- && chmod +x llvm.sh
- && ./llvm.sh ${COMPILER_VERSION}
+ && chmod +x llvm.sh \
+ && ./llvm.sh ${COMPILER_VERSION} \
  && apt-get install -y libomp-${COMPILER_VERSION}-dev clang-format-${COMPILER_VERSION} clang-tidy-${COMPILER_VERSION}
 
 RUN update-alternatives \
