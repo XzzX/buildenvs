@@ -1,11 +1,24 @@
-FROM xzzx/devel:ubuntu
+ARG COMPILER_VERSION=13
 
-RUN wget https://apt.llvm.org/llvm.sh
-RUN chmod +x llvm.sh
-RUN ./llvm.sh 13
-RUN apt-get install -y libomp-13-dev clang-format-13 clang-tidy-13
+FROM ubuntu:24.04
 
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-13 90 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-13 --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-13 --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-13
+ENV DEBIAN_FRONTEND=noninteractive
 
-ENV CC=clang-13
-ENV CXX=clang++-13
+COPY *.sh .
+RUN ./before_compiler_setup.sh
+
+RUN wget https://apt.llvm.org/llvm.sh \
+ && chmod +x llvm.sh
+ && ./llvm.sh ${COMPILER_VERSION}
+ && apt-get install -y libomp-${COMPILER_VERSION}-dev clang-format-${COMPILER_VERSION} clang-tidy-${COMPILER_VERSION}
+
+RUN update-alternatives \
+      --install /usr/bin/clang clang /usr/bin/clang-${COMPILER_VERSION} 90 
+      --slave /usr/bin/clang++ clang++ /usr/bin/clang++-${COMPILER_VERSION} 
+      --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-${COMPILER_VERSION} 
+      --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-${COMPILER_VERSION}
+
+ENV CC=clang-${COMPILER_VERSION}
+ENV CXX=clang++-${COMPILER_VERSION}
+
+RUN ./after_compiler_setup.sh
