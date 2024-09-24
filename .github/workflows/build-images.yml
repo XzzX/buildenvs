@@ -31,6 +31,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Convert build_args
+        id: build_args
+        run: |
+          echo "args<<EOF" >> $GITHUB_OUTPUT 
+          echo ${{ matrix.config.build_args }} | sed 's/,/\n/g' >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Build and Push Docker Image
         id: docker_build
         uses: docker/build-push-action@v6
@@ -39,9 +46,7 @@ jobs:
           file: ${{ matrix.DOCKERFILE }} 
           tags: xzzx/devel:${{ matrix.DOCKERFILE }}-${{ matrix.COMPILER_VERSION }}
           push: true
-          build-args:
-            - 'OS=${{ matrix.OS }}'
-            - 'COMPILER_VERSION=${{ matrix.COMPILER_VERSION }}'
+          build-args: ${{ steps.build_args.outputs.args }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
