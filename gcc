@@ -1,17 +1,16 @@
-FROM ubuntu:24.04
+FROM ${OS}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 COPY *.sh .
 RUN ./before_compiler_setup.sh
 
-# RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
 RUN apt-get update \ 
  && apt-get install -y \
-        gcc \
-        g++
+        gcc-${COMPILER_VERSION} \
+        g++-${COMPILER_VERSION}
 
-ENV CC=gcc
-ENV CXX=g++
+ENV CC=gcc-${COMPILER_VERSION}
+ENV CXX=g++-${COMPILER_VERSION}
 
 RUN ./after_compiler_setup.sh

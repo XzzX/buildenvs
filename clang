@@ -1,13 +1,9 @@
-FROM ubuntu:22.04
-
-ARG COMPILER_VERSION=13
+FROM ${OS}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 COPY *.sh .
 RUN ./before_compiler_setup.sh
-
-RUN echo ${COMPILER_VERSION}
 
 RUN wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \

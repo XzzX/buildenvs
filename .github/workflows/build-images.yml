@@ -14,7 +14,13 @@ jobs:
     continue-on-error: ${{ matrix.config.continue-on-error == 'true' }}
     strategy:
       matrix:
-        dockerfile: ['gcc', 'clang', 'gcc-offload']
+        include:
+          - DOCKERFILE: 'gcc'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 11
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:22.04'
+            COMPILER_VERSION: 13
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,9 +36,12 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ${{ github.workspace }}
-          file: ${{ matrix.dockerfile }} 
-          tags: xzzx/devel:${{ matrix.dockerfile }}
+          file: ${{ matrix.DOCKERFILE }} 
+          tags: xzzx/devel:${{ matrix.DOCKERFILE }}-${{ matrix.COMPILER_VERSION }}
           push: true
+          build-args:
+            OS: ${{ matrix.OS }}
+            COMPILER_VERSION: ${{ matrix.COMPILER_VERSION }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
