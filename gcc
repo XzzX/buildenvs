@@ -1,4 +1,4 @@
-ARG OS=ubuntu:24.04
+ARG OS
 FROM ${OS}
 
 ENV DEBIAN_FRONTEND=noninteractive
