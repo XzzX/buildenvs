@@ -18,9 +18,33 @@ jobs:
           - DOCKERFILE: 'gcc'
             OS: 'ubuntu:24.04'
             COMPILER_VERSION: 11
+          - DOCKERFILE: 'gcc'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 12
+          - DOCKERFILE: 'gcc'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 13
+          - DOCKERFILE: 'gcc'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 14
           - DOCKERFILE: 'clang'
             OS: 'ubuntu:22.04'
             COMPILER_VERSION: 13
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:22.04'
+            COMPILER_VERSION: 14
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:22.04'
+            COMPILER_VERSION: 15
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:22.04'
+            COMPILER_VERSION: 16
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 17
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 18
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
