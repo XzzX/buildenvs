@@ -40,8 +40,8 @@ jobs:
           tags: xzzx/devel:${{ matrix.DOCKERFILE }}-${{ matrix.COMPILER_VERSION }}
           push: true
           build-args:
-            OS: ${{ matrix.OS }}
-            COMPILER_VERSION: ${{ matrix.COMPILER_VERSION }}
+            - OS=${{ matrix.OS }}
+            - COMPILER_VERSION=${{ matrix.COMPILER_VERSION }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
