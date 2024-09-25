@@ -8,6 +8,7 @@ add-apt-repository ppa:git-core/ppa
 apt-get update
 apt-get upgrade -y
 apt-get install -y \
+    black \
     build-essential \
     ccache \
     cmake \
