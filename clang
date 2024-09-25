@@ -13,6 +13,7 @@ RUN wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
  && ./llvm.sh ${COMPILER_VERSION} \
  && apt-get install -y \
+      clang-${COMPILER_VERSION} \
       libomp-${COMPILER_VERSION}-dev \
       clang-format-${COMPILER_VERSION} \
       clang-tidy-${COMPILER_VERSION}
