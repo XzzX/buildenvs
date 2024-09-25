@@ -22,6 +22,7 @@ apt-get install -y \
     libhdf5-mpi-dev \
     libopenmpi-dev \
     ncurses-term \
+    pylint \
     python3 \
     python3-matplotlib \
     python3-numpy \
