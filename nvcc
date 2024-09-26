@@ -1,0 +1,15 @@
+ARG OS
+
+FROM ${OS}
+
+ARG COMPILER_VERSION
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY *.sh .
+RUN ./before_compiler_setup.sh
+
+ENV CC=nvcc
+ENV CXX=nvcc
+
+RUN ./after_compiler_setup.sh
