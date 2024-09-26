@@ -46,7 +46,7 @@ jobs:
             OS: 'ubuntu:24.04'
             COMPILER_VERSION: 18
           - DOCKERFILE: 'nvcc'
-            OS: '12.6.1-devel-ubuntu24.04'
+            OS: 'nvidia/cuda:12.6.1-devel-ubuntu24.04'
             COMPILER_VERSION: 12.6
             
     runs-on: ubuntu-latest
