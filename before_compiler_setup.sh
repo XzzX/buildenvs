@@ -24,10 +24,12 @@ apt-get install -y \
     ncurses-term \
     pylint \
     python3 \
+    python3-jinja2 \
     python3-matplotlib \
     python3-numpy \
     python3-pip \
     python3-scipy \
+    python3-yaml \
     software-properties-common \
     sudo \
     vim \
