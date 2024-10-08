@@ -1,4 +1,6 @@
-FROM ubuntu:24.04
+ARG OS
+
+FROM ${OS}
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
@@ -19,6 +21,3 @@ RUN apt-get install -y \
 
 RUN apt-get purge --autoremove -y 
 RUN rm -rf /var/lib/apt/lists/*
-
-ENV CC=gcc
-ENV CXX=g++

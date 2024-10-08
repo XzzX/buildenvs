@@ -15,6 +15,9 @@ jobs:
     strategy:
       matrix:
         include:
+          - DOCKERFILE: 'ubuntu'
+            OS: 'ubuntu:24.04'
+            COMPILER_VERSION: 'minimal'
           - DOCKERFILE: 'gcc'
             OS: 'ubuntu:24.04'
             COMPILER_VERSION: 11
