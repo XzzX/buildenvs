@@ -3,39 +3,22 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
  && apt-get upgrade -y
-# RUN apt-get install -y software-properties-common
-# RUN add-apt-repository ppa:git-core/ppa
-# RUN apt-get update
+
 RUN apt-get install -y \
         build-essential \
-        ccache \
         cmake \
         curl \
         doxygen \
         ghostscript \
         git \
         graphviz \
-        libboost-all-dev \
-        libfftw3-dev \
-        libhdf5-mpi-dev \
-        libopenmpi-dev \
         ncurses-term \
-        python3 \
-        python3-matplotlib \
-        python3-numpy \
-        python3-pip \
-        python3-scipy \
         sudo \
         vim \
         wget 
 
-# COPY kitware-archive.sh kitware-archive.sh
-# RUN ./kitware-archive.sh
-# RUN add-apt-repository ppa:git-core/ppa
-# RUN apt-get upgrade -y
-
 RUN apt-get purge --autoremove -y 
 RUN rm -rf /var/lib/apt/lists/*
 
-ENV OMP_PROC_BIND=spread
-ENV OMP_PLACES=threads
+ENV CC=gcc
+ENV CXX=g++
