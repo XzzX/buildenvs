@@ -1,0 +1,15 @@
+ARG OS=rocm/dev-ubuntu-24.04:latest
+
+FROM ${OS}
+
+ARG COMPILER_VERSION
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY *.sh .
+RUN ./before_compiler_setup.sh
+
+ENV CC=hipcc
+ENV CXX=hipcc
+
+RUN ./after_compiler_setup.sh
