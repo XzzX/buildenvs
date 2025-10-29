@@ -60,6 +60,9 @@ jobs:
           - DOCKERFILE: 'nvcc'
             OS: 'nvidia/cuda:12.6.1-devel-ubuntu24.04'
             COMPILER_VERSION: 12.6
+          - DOCKERFILE: 'hipcc'
+            OS: 'rocm/dev-ubuntu-24.04:7.0.2'
+            COMPILER_VERSION: 7.0.2
             
     runs-on: ubuntu-latest
     steps:
