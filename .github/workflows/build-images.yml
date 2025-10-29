@@ -34,16 +34,13 @@ jobs:
             OS: 'ubuntu:25.10'
             COMPILER_VERSION: 15
           - DOCKERFILE: 'clang'
-            OS: 'ubuntu:22.04'
-            COMPILER_VERSION: 13
-          - DOCKERFILE: 'clang'
-            OS: 'ubuntu:22.04'
+            OS: 'ubuntu:24.04'
             COMPILER_VERSION: 14
           - DOCKERFILE: 'clang'
-            OS: 'ubuntu:22.04'
+            OS: 'ubuntu:24.04'
             COMPILER_VERSION: 15
           - DOCKERFILE: 'clang'
-            OS: 'ubuntu:22.04'
+            OS: 'ubuntu:24.04'
             COMPILER_VERSION: 16
           - DOCKERFILE: 'clang'
             OS: 'ubuntu:24.04'
