@@ -30,6 +30,9 @@ jobs:
           - DOCKERFILE: 'gcc'
             OS: 'ubuntu:24.04'
             COMPILER_VERSION: 14
+          - DOCKERFILE: 'gcc'
+            OS: 'ubuntu:25.10'
+            COMPILER_VERSION: 15
           - DOCKERFILE: 'clang'
             OS: 'ubuntu:22.04'
             COMPILER_VERSION: 13
@@ -48,6 +51,15 @@ jobs:
           - DOCKERFILE: 'clang'
             OS: 'ubuntu:24.04'
             COMPILER_VERSION: 18
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:25.10'
+            COMPILER_VERSION: 19
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:25.10'
+            COMPILER_VERSION: 20
+          - DOCKERFILE: 'clang'
+            OS: 'ubuntu:25.10'
+            COMPILER_VERSION: 21
           - DOCKERFILE: 'nvcc'
             OS: 'nvidia/cuda:12.6.1-devel-ubuntu24.04'
             COMPILER_VERSION: 12.6
