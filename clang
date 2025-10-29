@@ -1,4 +1,4 @@
-ARG OS
+ARG OS=ubuntu:24.04
 
 FROM ${OS}
 
@@ -9,10 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY *.sh .
 RUN ./before_compiler_setup.sh
 
-RUN wget https://apt.llvm.org/llvm.sh \
- && chmod +x llvm.sh \
- && ./llvm.sh ${COMPILER_VERSION} \
- && apt-get install -y \
+RUN apt-get install -y \
       clang-${COMPILER_VERSION} \
       libomp-${COMPILER_VERSION}-dev \
       clang-format-${COMPILER_VERSION} \
