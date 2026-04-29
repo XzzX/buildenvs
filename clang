@@ -10,8 +10,8 @@ COPY *.sh .
 RUN ./before_compiler_setup.sh
 
 RUN wget https://apt.llvm.org/llvm.sh \
-    chmod +x llvm.sh \
-    ./llvm.sh ${COMPILER_VERSION}
+ && chmod +x llvm.sh \
+ && ./llvm.sh ${COMPILER_VERSION}
 
 RUN update-alternatives \
       --install /usr/bin/clang clang /usr/bin/clang-${COMPILER_VERSION} 90 \
