@@ -2,10 +2,12 @@
 
 DEBIAN_FRONTEND=noninteractive
 
+apt-get update
+apt-get install -y software-properties-common
+
 add-apt-repository ppa:git-core/ppa
 ./kitware-archive.sh
 
-apt-get update
 apt-get upgrade -y
 apt-get install -y \
     black \
@@ -30,8 +32,7 @@ apt-get install -y \
     python3-pip \
     python3-scipy \
     python3-yaml \
-    software-properties-common \
     sudo \
     vim \
     wget
-
+    
