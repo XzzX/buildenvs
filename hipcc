@@ -1,4 +1,4 @@
-ARG OS=rocm/dev-ubuntu-24.04:latest
+ARG OS=rocm/rocm-terminal
 
 FROM ${OS}
 
