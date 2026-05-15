@@ -18,6 +18,7 @@ apt-get install -y \
     doxygen \
     ghostscript \
     git \
+    git-lfs \
     graphviz \
     libboost-all-dev \
     libfftw3-dev \
